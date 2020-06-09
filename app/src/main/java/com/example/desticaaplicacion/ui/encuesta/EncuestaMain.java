@@ -22,8 +22,8 @@ public class EncuestaMain extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(EncuestaViewModel.class);
-        View root = inflater.inflate(R.layout.layout_encuesta, container, false);
+        View root1 = inflater.inflate(R.layout.layout_encuesta, container, false);
 
-        return root;
+        return root1;
     }
 }
