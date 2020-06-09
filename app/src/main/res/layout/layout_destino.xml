@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:gravity="center"
+            android:text="Encuentre su destino"
+            android:textColor="#070707"
+            android:textSize="24sp" />
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:queryHint="Buscar Atractivo "
+            android:visibility="visible" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="20px">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:clickable="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img2" />
+
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:adjustViewBounds="false"
+                            android:cropToPadding="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img1" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+
+                        <TextView
+                            android:id="@+id/txt1"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Playa Ballena" />
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Volcan Arenal" />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img3"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:clickable="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img3" />
+
+                        <ImageView
+                            android:id="@+id/img4"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:adjustViewBounds="false"
+                            android:cropToPadding="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img4" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txt3"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Faro, Puntarenas" />
+
+                        <TextView
+                            android:id="@+id/txt4"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Puentes colgantes" />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img5"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:clickable="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img5" />
+
+                        <ImageView
+                            android:id="@+id/img6"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:adjustViewBounds="false"
+                            android:cropToPadding="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img6" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txt5"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Guayabo" />
+
+                        <TextView
+                            android:id="@+id/txt6"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Aguas Termanles" />
+                    </TableRow>
+                </TableLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/img7"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:clickable="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img7" />
+
+                        <ImageView
+                            android:id="@+id/img8"
+                            android:layout_width="200dp"
+                            android:layout_height="150dp"
+                            android:adjustViewBounds="false"
+                            android:cropToPadding="false"
+                            android:scaleType="fitXY"
+                            android:src="@mipmap/img8" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/txt7"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Cahuita, Limon" />
+
+                        <TextView
+                            android:id="@+id/txt8"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:gravity="center"
+                            android:text="Teatro Nacional" />
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

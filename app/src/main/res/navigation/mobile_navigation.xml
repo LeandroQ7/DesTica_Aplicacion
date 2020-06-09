@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.desticaaplicacion.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home">
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/nav_destinos"
+        android:name="com.example.desticaaplicacion.ui.destino.DestinoMain"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/layout_destino" />
+
+    <fragment
+        android:id="@+id/nav_intereses"
+        android:name="com.example.desticaaplicacion.ui.intereses.InteresesMain"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/layout_intereses" />
+
+    <fragment
+
+        android:id="@+id/nav_creditos"
+        android:name="com.example.desticaaplicacion.ui.creditos.CreditosMain"
+        android:label="Acerca de Nosotros"
+        tools:layout="@layout/layout_creditos" />
+    <fragment
+        android:id="@+id/nav_opinion"
+        android:name="com.example.desticaaplicacion.ui.encuesta.EncuestaMain"
+        android:label="Opinion"
+        tools:layout="@layout/layout_encuesta" />
+    <fragment
+        android:id="@+id/nav_registro"
+        android:name="com.example.desticaaplicacion.ui.login.RegistroMain"
+        android:label="Registrarse"
+        tools:layout="@layout/layout_registro" />
+    <fragment
+        android:id="@+id/nav_sesion"
+        android:name="com.example.desticaaplicacion.ui.login.SesionMain"
+        android:label="Iniciar Sesion"
+        tools:layout="@layout/layout_sesion" />
+
+
+</navigation>

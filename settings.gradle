@@ -1,0 +1,2 @@
+rootProject.name='DesTica Aplicacion'
+include ':app'
