@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.widget.Button;
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         texto = (TextView)findViewById(R.id.textbd);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -57,17 +61,46 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        final Button btnPrueba = (Button) findViewById(R.id.btnPrueba);
+
+        //modifica las opciones del menu, con un usuario logueado
+        String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
+        if (TextUtils.isEmpty(sessionId)) {
+
+        }else{
+            if(TextUtils.equals(sessionId,"login")){
+                Menu menuNav = navigationView.getMenu();
+                MenuItem loginItems= menuNav.findItem(R.id.nav_registro);
+                loginItems.setVisible(false);
+                loginItems= menuNav.findItem(R.id.nav_sesion);
+                loginItems.setVisible(false);
+
+                loginItems= menuNav.findItem(R.id.nav_logout);
+                loginItems.setVisible(true);
+                loginItems= menuNav.findItem(R.id.nav_favorito);
+                loginItems.setVisible(true);
+
+            }
+
+        }
+
 
         //bd action
-        final Button btnPrueba = (Button) findViewById(R.id.btnPrueba);
 
 
         btnPrueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
 
-                connectionClass = new ConnectionClass();
-                new getCurso().execute();
+
+                //MenuItem mi = navigationView.getMenu().add(Menu.NONE, Menu.NONE, Menu.NONE, "Menu Item 1");
+                Menu menuNav = navigationView.getMenu();
+                MenuItem logoutItem = menuNav.findItem(R.id.nav_registro);
+                logoutItem.setVisible(false);
+                btnPrueba.setText(logoutItem.getTitle());
+                //connectionClass = new ConnectionClass();
+                //new getCurso().execute();
             }
         });
 
