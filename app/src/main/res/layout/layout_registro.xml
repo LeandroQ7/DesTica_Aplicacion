@@ -14,7 +14,7 @@
         android:padding="50px">
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/edit"
             android:layout_width="match_parent"
             android:layout_height="119dp"
             android:gravity="center"
