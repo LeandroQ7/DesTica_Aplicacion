@@ -1,9 +1,11 @@
 package com.example.desticaaplicacion.ui.login;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,11 +14,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.desticaaplicacion.ConnectionClass;
+import com.example.desticaaplicacion.MainActivity;
 import com.example.desticaaplicacion.R;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class RegistroMain extends Fragment {
 
     private RegistroViewModel registroViewModel;
+    ConnectionClass connectionClass;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -24,6 +34,41 @@ public class RegistroMain extends Fragment {
                 ViewModelProviders.of(this).get(RegistroViewModel.class);
         View root = inflater.inflate(R.layout.layout_registro, container, false);
 
+
+        Button btnRegister = root.findViewById(R.id.btnRegister);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                connectionClass = new ConnectionClass();
+                new RegistroMain.setUser().execute();
+            }
+        });
         return root;
+    }
+    public class setUser extends AsyncTask<String,Void, ResultSet> {
+
+        @Override
+        protected ResultSet doInBackground(String... strings) {
+
+            try {
+
+                Connection con = connectionClass.CONN();
+
+                Statement estado = con.createStatement();
+                String peticion ="SELECT * FROM dbdestica.tbuser limit 1";
+                estado.executeQuery(peticion);
+
+            } catch (SQLException e) {
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(ResultSet result) {
+
+        }
     }
 }

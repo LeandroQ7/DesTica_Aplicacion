@@ -66,86 +66,58 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-                //MainActivity.Doregister doregister = new MainActivity.Doregister();
-
-                //doregister.execute("");
-
                 connectionClass = new ConnectionClass();
                 new getCurso().execute();
             }
         });
 
+
     }
 
-    public class getCurso extends AsyncTask<String,Void, ResultSet> {
-
-        @Override
-        protected ResultSet doInBackground(String... strings) {
-
-            try {
-
-                Connection con = connectionClass.CONN();
-
-                Statement estado = con.createStatement();
-
-                String peticion ="SELECT * FROM dbdestica.tbuser limit 1";
-                ResultSet result = estado.executeQuery(peticion);
-
-                return result;
-            } catch (SQLException e) {
-
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ResultSet result) {
-
-            try {
 
 
-                while (result.next()) {
-                    texto.setText(result.getString("email"));
 
-                }
+public class getCurso extends AsyncTask<String,Void, ResultSet> {
 
+    @Override
+    protected ResultSet doInBackground(String... strings) {
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        try {
+
+            Connection con = connectionClass.CONN();
+
+            Statement estado = con.createStatement();
+
+            String peticion ="SELECT * FROM dbdestica.tbuser limit 1";
+            ResultSet result = estado.executeQuery(peticion);
+
+            return result;
+        } catch (SQLException e) {
 
         }
+        return null;
     }
 
-    public class Doregister extends AsyncTask<String,String,String>
-    {
-        @Override
-        protected String doInBackground(String... params) {
+    @Override
+    protected void onPostExecute(ResultSet result) {
+
+        try {
 
 
-            try {
-                Connection con = connectionClass.CONN();
+            while (result.next()) {
+                texto.setText(result.getString("email"));
 
-                String query="SELECT * FROM dbdestica.tbuser limit 1;";
-
-                Statement stmt = con.createStatement();
-                stmt.executeUpdate(query);
-
-                Context context = getApplicationContext();
-                CharSequence text = "Curso Agregado";
-                int duration = Toast.LENGTH_SHORT;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
             }
-            catch (Exception ex)
-            {
-                Log.e("ERRORR", ex.getMessage());
-            }
-            return "";
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
     }
+}
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
