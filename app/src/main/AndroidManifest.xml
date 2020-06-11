@@ -22,7 +22,7 @@
             android:parentActivityName=".ui.destino.DestinoMain" />
         <activity
             android:name=".ui.login.Favoritos"
-            android:parentActivityName=".MainActivity"
+
             />
         <activity
 

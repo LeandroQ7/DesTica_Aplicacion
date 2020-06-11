@@ -23,11 +23,11 @@ import java.util.ArrayList;
 public class ListAdapter extends BaseAdapter {
 
     Context context;
-    private final String [] values;
+    private final ArrayList<String> values;
     private final String [] numbers;
     private final int [] images;
 
-    public ListAdapter(Context context, String [] values, String [] numbers, int [] images){
+    public ListAdapter(Context context, ArrayList<String> values, String [] numbers, int [] images){
         //super(context, R.layout.single_list_app_item, utilsArrayList);
         this.context = context;
         this.values = values;
@@ -37,7 +37,7 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return values.length;
+        return values.size();
     }
 
     @Override
@@ -76,7 +76,7 @@ public class ListAdapter extends BaseAdapter {
             result=convertView;
         }
 
-        viewHolder.txtName.setText(values[position]);
+        viewHolder.txtName.setText(values.get(position));
         viewHolder.txtVersion.setText("Version: "+numbers[position]);
         viewHolder.icon.setImageResource(images[position]);
 
