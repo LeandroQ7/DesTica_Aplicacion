@@ -19,6 +19,11 @@
         android:name="com.example.desticaaplicacion.ui.destino.DestinoMain"
         android:label="@string/menu_gallery"
         tools:layout="@layout/layout_destino" />
+    <fragment
+        android:id="@+id/nav_fav"
+        android:name="com.example.desticaaplicacion.ui.login.Favoritos"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/layout_destino" />
 
     <fragment
         android:id="@+id/nav_intereses"
@@ -47,6 +52,11 @@
         android:name="com.example.desticaaplicacion.ui.login.SesionMain"
         android:label="Iniciar Sesion"
         tools:layout="@layout/layout_sesion" />
+    <fragment
+        android:id="@+id/nav_favorito"
+        android:name="com.example.desticaaplicacion.ui.login.FavoritoMain"
+        android:label="Favoritos"
+        tools:layout="@layout/layout_favoritos" />
 
 
 </navigation>
