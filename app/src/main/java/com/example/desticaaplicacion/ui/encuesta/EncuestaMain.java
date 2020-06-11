@@ -1,5 +1,5 @@
 package com.example.desticaaplicacion.ui.encuesta;
-
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,22 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
 import com.example.desticaaplicacion.*;
-
 import com.example.desticaaplicacion.R;
-
 import java.sql.Connection;
 import java.sql.Statement;
 
 public class EncuestaMain extends Fragment {
-
-    private EncuestaViewModel homeViewModel;
     ConnectionClass connectionClass;
-
     EditText puntos;
     EditText comentario;
     String txtpuntos="";
@@ -45,24 +39,35 @@ public class EncuestaMain extends Fragment {
                 if (selectedRadioButtonID != -1) {
                      RadioButton selectedRadioButton = root.findViewById(selectedRadioButtonID);
                      txtpuntos = selectedRadioButton.getText().toString();
-                    //txtpuntos="4";
-                    txtcomentario = comentario.getText().toString();
+                     txtcomentario = comentario.getText().toString();
                 } else {}
                 connectionClass = new ConnectionClass();
                 new EncuestaMain.setEncuesta().execute();
+                comentario.setText("");/*Borra texto del comentario*/
+                mensaje();
+            }
+
+            public void mensaje(){
+                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+                alertDialog.setTitle("Muchas Gracias");
+                alertDialog.setMessage("Tu opinión fue recibida correctamente.");
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
             }
         });
-
         return root;
     }
 
     public class setEncuesta extends AsyncTask<String,String,String> {
-
         @Override
         protected String doInBackground(String... strings) {
             try {
                 Connection con = connectionClass.CONN();
-                comentario.setText(txtcomentario);
                 String query = "INSERT INTO tbcalification  (calification, opinion) VALUES ("+txtpuntos+",'" + txtcomentario + "');";
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate(query);
@@ -72,4 +77,6 @@ public class EncuestaMain extends Fragment {
             return "0";
         }
     }
+
+
 }
