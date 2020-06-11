@@ -21,8 +21,6 @@ public class DestinoMain extends Fragment {
     private DestinoViewModel homeViewModel;
 
 
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =

@@ -32,7 +32,6 @@ public class Recomendaciones extends AppCompatActivity {
 
             }
 
-
         });
         final Button btn2 = (Button) findViewById(R.id.detalle2);
 
