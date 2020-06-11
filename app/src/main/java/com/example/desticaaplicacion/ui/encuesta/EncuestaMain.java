@@ -25,33 +25,33 @@ public class EncuestaMain extends Fragment {
 
     private EncuestaViewModel homeViewModel;
     ConnectionClass connectionClass;
+
     EditText puntos;
     EditText comentario;
-
-    String txtpuntos;
-    String txtcomentario;
+    String txtpuntos="";
+    String txtcomentario="";
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        //homeViewModel = ViewModelProviders.of(this).get(EncuestaViewModel.class);
-        View root = inflater.inflate(R.layout.layout_encuesta, container, false);
+        final View root = inflater.inflate(R.layout.layout_encuesta, container, false);
 
-        // get selected radio button from radioGroup
-        RadioGroup gender;
-        //puntos = gender.getCheckedRadioButtonId();
+        final RadioGroup radioGroup = root.findViewById(R.id.radioEncuesta);
         comentario = root.findViewById(R.id.editText2);
-        Button buttonencuesta = root.findViewById(R.id.buttonencuesta);
 
+        Button buttonencuesta = root.findViewById(R.id.buttonencuesta);
         buttonencuesta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                        //txtpuntos= puntos.getText().toString();
-                        txtcomentario = comentario.getText().toString();
-                        
-                        connectionClass = new ConnectionClass();
-                        new EncuestaMain.setEncuesta().execute();
+                int selectedRadioButtonID = radioGroup.getCheckedRadioButtonId();
+                if (selectedRadioButtonID != -1) {
+                     RadioButton selectedRadioButton = root.findViewById(selectedRadioButtonID);
+                     txtpuntos = selectedRadioButton.getText().toString();
+                    //txtpuntos="4";
+                    txtcomentario = comentario.getText().toString();
+                } else {}
+                connectionClass = new ConnectionClass();
+                new EncuestaMain.setEncuesta().execute();
             }
         });
-
 
         return root;
     }
@@ -63,14 +63,13 @@ public class EncuestaMain extends Fragment {
             try {
                 Connection con = connectionClass.CONN();
                 comentario.setText(txtcomentario);
-                String query = "INSERT INTO setEncuesta \n" + "(calification,\n" + "opinion)\n" + "VALUES\n" + "(" + 1 + ",'" + txtcomentario + "');";
+                String query = "INSERT INTO tbcalification  (calification, opinion) VALUES ("+txtpuntos+",'" + txtcomentario + "');";
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate(query);
             } catch (Exception ex) {
                 Log.e("ERRORR", ex.getMessage());
             }
-            return "";
-
+            return "0";
         }
     }
 }
