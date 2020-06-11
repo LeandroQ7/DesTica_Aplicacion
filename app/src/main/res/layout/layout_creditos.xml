@@ -21,7 +21,7 @@
         <TextView
             android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="89dp"
+            android:layout_height="34dp"
             android:gravity="center"
             android:text="Acerca de Nosotros"
             android:textColor="#0B0B0B"
@@ -42,9 +42,35 @@
             app:showFullScreenButton="false" />
 
         <TextView
+            android:id="@+id/textView13"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:fontFamily="sans-serif-thin"
+            android:lineSpacingExtra="12sp"
+            android:text="Valoración de la Comunidad"
+            android:textAlignment="center"
+            android:textColor="#0B0B0B"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <TextView
+            android:id="@+id/txtpuntaje"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="Valoración del 1 al 3"
+            android:fontFamily="sans-serif-condensed-light"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#BC0B0B"
+            android:textSize="24sp"
+            android:typeface="monospace"
+            tools:text="0" />
+
+        <TextView
             android:id="@+id/textView12"
             android:layout_width="match_parent"
-            android:layout_height="89dp"
+            android:layout_height="51dp"
             android:gravity="center"
             android:text="Desarrolladores"
             android:textColor="#0B0B0B"
