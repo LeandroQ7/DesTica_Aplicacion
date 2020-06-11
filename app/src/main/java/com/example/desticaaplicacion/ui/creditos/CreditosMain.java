@@ -16,12 +16,8 @@ import com.example.desticaaplicacion.R;
 
 public class CreditosMain extends Fragment {
 
-    private CreditosViewModel homeViewModel;
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(CreditosViewModel.class);
         View root = inflater.inflate(R.layout.layout_creditos, container, false);
 
         return root;
