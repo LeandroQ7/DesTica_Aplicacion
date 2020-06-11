@@ -30,7 +30,6 @@ public class SesionMain extends Fragment {
         View root = inflater.inflate(R.layout.layout_sesion, container, false);
 
 
-
         final Button btnIniciar = root.findViewById(R.id.boton_iniciar_sesion);
 
 
