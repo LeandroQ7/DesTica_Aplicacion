@@ -44,6 +44,7 @@
                     android:text="Puntuacion de la app" />
 
                 <RadioGroup
+                    android:id="@+id/radioEncuesta"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -83,7 +84,7 @@
                     android:inputType="textMultiLine" />
 
                 <Button
-                    android:id="@+id/btnEnviar"
+                    android:id="@+id/buttonencuesta"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Enviar Opinion" />
