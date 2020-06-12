@@ -17,18 +17,28 @@
             android:layout_height="77dp"
             android:gravity="center"
             android:text="Elije tus intereses"
-            android:textColor="#090909" />
+            android:textAlignment="center"
+            android:textColor="#090909"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtresultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0" />
 
         <TextView
             android:id="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:text="Hemos encontrado varios sitios que ojalá sean de tu agrado" />
+            android:text="Hemos encontrado varios sitios que ojalá sean de tu agrado"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="34dp"
             android:text="Seleccione su destino" />
 
         <TableLayout
@@ -79,7 +89,5 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </TableLayout>
-
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
