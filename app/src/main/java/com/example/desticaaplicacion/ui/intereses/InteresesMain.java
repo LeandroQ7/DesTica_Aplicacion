@@ -34,7 +34,7 @@ public class InteresesMain extends Fragment {
     private InteresesViewModel interesesViewModel;
     ConnectionClass connectionClass;
     EditText min, max;
-    String txtmin, txtmax, txtambiente, txtpaquete;
+    String txtmin, txtmax, txtambiente, txtpaquete, txtcamino, txttiempo;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -48,7 +48,8 @@ public class InteresesMain extends Fragment {
 
         final RadioGroup radioGroup1 = root.findViewById(R.id.radioAmbiente);
         final RadioGroup radioGroup2 = root.findViewById(R.id.radioPaquete);
-
+        final RadioGroup radioGroup3 = root.findViewById(R.id.radioCamino);
+        final RadioGroup radioGroup4 = root.findViewById(R.id.radioTiempo);
 
         /*redireccionar a siguiente vista*/
         final Button btnIniciar = root.findViewById(R.id.buscar_destinos);
@@ -57,6 +58,8 @@ public class InteresesMain extends Fragment {
             public void onClick(View v) {
                 int selectedRadioButtonID1 = radioGroup1.getCheckedRadioButtonId();
                 int selectedRadioButtonID2 = radioGroup2.getCheckedRadioButtonId();
+                int selectedRadioButtonID3 = radioGroup3.getCheckedRadioButtonId();
+                int selectedRadioButtonID4 = radioGroup4.getCheckedRadioButtonId();
                 if (selectedRadioButtonID1 != -1) {
                     RadioButton selectedRadioButton1 = root.findViewById(selectedRadioButtonID1);
                     txtambiente = selectedRadioButton1.getText().toString();
@@ -65,6 +68,14 @@ public class InteresesMain extends Fragment {
                     RadioButton selectedRadioButton2 = root.findViewById(selectedRadioButtonID2);
                     txtpaquete = selectedRadioButton2.getText().toString();
                 } else {txtpaquete="";}
+                if (selectedRadioButtonID3 != -1) {
+                    RadioButton selectedRadioButton3 = root.findViewById(selectedRadioButtonID3);
+                    txtcamino = selectedRadioButton3.getText().toString();
+                } else {txtcamino="";}
+                if (selectedRadioButtonID4 != -1) {
+                    RadioButton selectedRadioButton4 = root.findViewById(selectedRadioButtonID4);
+                    txttiempo = selectedRadioButton4.getText().toString();
+                } else {txttiempo="";}
 
                 txtmin = min.getText().toString();
                 txtmax = max.getText().toString();
@@ -101,8 +112,12 @@ public class InteresesMain extends Fragment {
         protected String doInBackground(String... strings) {
             try {
                 Connection con = connectionClass.CONN();
-                String query = "INSERT INTO tbsearch (min, max, ambiente, paquete) "+
-                "VALUES ('"+txtmin+"','" + txtmax + "','" + txtambiente + "','" + txtpaquete + "');";
+                String query2 = "TRUNCATE TABLE tbsearch;";
+                Statement stmt2 = con.createStatement();
+                stmt2.executeUpdate(query2);
+
+                String query = "INSERT INTO tbsearch (min, max, ambiente, paquete, camino, tiempo) "+
+                "VALUES ('"+txtmin+"','" + txtmax + "','" + txtambiente + "','" + txtpaquete + "','" + txtcamino + "','" + txttiempo + "');";
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate(query);
             } catch (Exception ex) {

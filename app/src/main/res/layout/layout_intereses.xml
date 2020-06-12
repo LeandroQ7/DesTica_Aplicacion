@@ -165,11 +165,67 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Cultural" />
-
-
-
                 </RadioGroup>
 
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tipo de Camino" />
+
+                <RadioGroup
+                    android:id="@+id/radioCamino"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/radio10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Asfalto" />
+
+                    <RadioButton
+                        android:id="@+id/radio11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lastre" />
+
+                    <RadioButton
+                        android:id="@+id/radio12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Tierra" />
+                </RadioGroup>
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tiempo" />
+
+                <RadioGroup
+                    android:id="@+id/radioTiempo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <RadioButton
+                        android:id="@+id/radio14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Llovioso" />
+
+                    <RadioButton
+                        android:id="@+id/radio15"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Caluroso" />
+
+                    <RadioButton
+                        android:id="@+id/radio16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Húmedo" />
+                </RadioGroup>
 
                 <Button
                     android:id="@+id/buscar_destinos"

@@ -24,6 +24,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
 
 public class CreditosMain extends Fragment {
     ConnectionClass connectionClass;
@@ -50,7 +51,7 @@ public class CreditosMain extends Fragment {
                 ResultSet result = estado.executeQuery(peticion);
                 return result;
             } catch (SQLException error) {
-                Log.e("ERRORR", error.getMessage());
+                Log.e("ERRORR", Objects.requireNonNull(error.getMessage()));
             }
             return null;
         }
