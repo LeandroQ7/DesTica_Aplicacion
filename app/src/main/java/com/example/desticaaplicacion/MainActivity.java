@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         //modifica las opciones del menu, con un usuario logueado
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
         String userId = getIntent().getStringExtra("EXTRA_SESSION_USER");
+        String userName = getIntent().getStringExtra("EXTRA_SESSION_USERNAME");
         if (TextUtils.isEmpty(sessionId)) {
 
         }else{
@@ -83,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
                 loginItems= menuNav.findItem(R.id.nav_user);
                 loginItems.setTitle(userId);
+
+                loginItems= menuNav.findItem(R.id.nav_name);
+                loginItems.setTitle("Bienvenido: "+userName);
+                loginItems.setVisible(true);
 
 
             }
