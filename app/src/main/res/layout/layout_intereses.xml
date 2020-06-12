@@ -115,19 +115,19 @@
                         android:id="@+id/radioButton2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Destino en Ciudad" />
+                        android:text="Ciudad" />
 
                     <RadioButton
                         android:id="@+id/radioButton3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="En Montaña" />
+                        android:text="Montaña" />
 
                     <RadioButton
                         android:id="@+id/radioButton4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Parques, lugares historicos" />
+                        android:text="Historico" />
 
                 </RadioGroup>
 
@@ -152,13 +152,19 @@
                         android:id="@+id/radio2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Individual" />
+                        android:text="Negocio" />
 
                     <RadioButton
                         android:id="@+id/radio3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Personalizado" />
+                        android:text="Deportivo" />
+
+                    <RadioButton
+                        android:id="@+id/radio4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cultural" />
 
 
 
