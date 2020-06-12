@@ -27,6 +27,11 @@ public class Recomendaciones extends AppCompatActivity {
 
     ConnectionClass connectionClass;
     TextView txtresultado;
+    String ambiente;
+    String paquete;
+    String camino;
+    String tiempo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +41,14 @@ public class Recomendaciones extends AppCompatActivity {
         actionBar.setTitle("Destinos Encontrados");
 
         txtresultado = findViewById(R.id.txtresultado);
+
+        //valores que ingreso el usuario
+        ambiente = getIntent().getStringExtra("EXTRA_SESSION_AMBIENTE");
+        paquete = getIntent().getStringExtra("EXTRA_SESSION_PAQUETE");
+        camino = getIntent().getStringExtra("EXTRA_SESSION_CAMINO");
+        tiempo = getIntent().getStringExtra("EXTRA_SESSION_TIEMPO");
+
+
         connectionClass = new ConnectionClass();
         new Recomendaciones.getEuclides().execute();
 
@@ -66,42 +79,6 @@ public class Recomendaciones extends AppCompatActivity {
 
         startActivity(intent);
     }
-
-    public class getRecomendacion extends AsyncTask<String,Void, ResultSet> {
-
-        @SuppressLint("WrongThread")
-        @Override
-        protected ResultSet doInBackground(String... strings) {
-            try {
-                Connection con = connectionClass.CONN();
-                Statement estado = con.createStatement();
-                String peticion = "SELECT min, max, ambiente, paquete FROM dbdestica.tbsearch;";
-                ResultSet result = estado.executeQuery(peticion);
-                return result;
-            } catch (SQLException error) {
-                Log.e("ERRORR", error.getMessage());
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ResultSet result) {
-            String parametros;
-            try {
-                while (result.next()) {
-                    parametros=result.getString("min")+" "+result.getString("max")+" "+
-                            result.getString("ambiente")+" "+result.getString("paquete");
-                }
-
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-
 
 
 

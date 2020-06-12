@@ -79,13 +79,16 @@ public class InteresesMain extends Fragment {
 
                 txtmin = min.getText().toString();
                 txtmax = max.getText().toString();
-                connectionClass = new ConnectionClass();
-                new InteresesMain.setSearch().execute();
+
                 min.setText("");/*Borra texto del min*/
                 max.setText("");/*Borra texto del max*/
 
                 Intent mainIntent = new Intent(getActivity(),
                         Recomendaciones.class);
+                mainIntent.putExtra("EXTRA_SESSION_AMBIENTE", txtambiente);
+                mainIntent.putExtra("EXTRA_SESSION_PAQUETE", txtpaquete);
+                mainIntent.putExtra("EXTRA_SESSION_CAMINO", txtcamino);
+                mainIntent.putExtra("EXTRA_SESSION_TIEMPO", txttiempo);
                 startActivity(mainIntent);
                 mensaje();
             }
@@ -107,23 +110,5 @@ public class InteresesMain extends Fragment {
         return root;
     }
 
-    public class setSearch extends AsyncTask<String,String,String> {
-        @Override
-        protected String doInBackground(String... strings) {
-            try {
-                Connection con = connectionClass.CONN();
-                String query2 = "TRUNCATE TABLE tbsearch;";
-                Statement stmt2 = con.createStatement();
-                stmt2.executeUpdate(query2);
 
-                String query = "INSERT INTO tbsearch (min, max, ambiente, paquete, camino, tiempo) "+
-                "VALUES ('"+txtmin+"','" + txtmax + "','" + txtambiente + "','" + txtpaquete + "','" + txtcamino + "','" + txttiempo + "');";
-                Statement stmt = con.createStatement();
-                stmt.executeUpdate(query);
-            } catch (Exception ex) {
-                Log.e("ERRORR", ex.getMessage());
-            }
-            return "0";
-        }
-    }
 }
