@@ -1,20 +1,16 @@
 package com.example.desticaaplicacion.ui.destino;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,20 +19,19 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.desticaaplicacion.ConnectionClass;
 import com.example.desticaaplicacion.R;
-import com.example.desticaaplicacion.ui.ListAdapter;
-//import com.example.desticaaplicacion.ui.login.Favoritos;
+import com.google.android.material.navigation.NavigationView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 
-public class DestinoMain extends Fragment {
+public class DestinoMain extends Fragment implements View.OnClickListener {
 
     private DestinoViewModel homeViewModel;
     ConnectionClass connectionClass;
+    String userID;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,37 +40,34 @@ public class DestinoMain extends Fragment {
                 ViewModelProviders.of(this).get(DestinoViewModel.class);
         View root = inflater.inflate(R.layout.layout_destino, container, false);
 
+        NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
 
 
         final ImageView img1 = root.findViewById(R.id.img1);
         final ImageView img2 = root.findViewById(R.id.img2);
-       /* final ImageView img3 = root.findViewById(R.id.img3);
-        final ImageView img4 = root.findViewById(R.id.img4);
-        final ImageView img5 = root.findViewById(R.id.img5);
-        final ImageView img6 = root.findViewById(R.id.img6);
-        final ImageView img7 = root.findViewById(R.id.img7);
-        final ImageView img8 = root.findViewById(R.id.img8);*/
 
-       /* final TextView txt = root.findViewById(R.id.txt1);*/
 
+        Menu menuNav = navigationView.getMenu();
+        MenuItem item= menuNav.findItem(R.id.nav_user);
+        userID=item.getTitle()+"";
 
         connectionClass = new ConnectionClass();
         addRows(root);
 
-        //img1.setOnClickListener(new View.OnClickListener() {
-            // Start new list activity
-        //public void onClick(View v) {
-        //Intent mainIntent = new Intent(getActivity(),
-        // InfoAtractivoclass);
-
-        //startActivity(mainIntent);
-        // }
-        // });
-
-
-
         return root;
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        String id= v.getId()+"";
+        //t.setText(id);
+        Intent mainIntent = new Intent(getActivity(),
+                InfoAtractivo.class);
+        mainIntent.putExtra("EXTRA_SESSION_DESTINATION", id);
+        mainIntent.putExtra("EXTRA_SESSION_USER", userID);
+
+        startActivity(mainIntent);
     }
 
     private void addRows(View root) {
@@ -88,7 +80,7 @@ public class DestinoMain extends Fragment {
             Connection con = connectionClass.CONN();
             Statement estado = con.createStatement();
 
-            String peticion ="select title, amount, image from tbdestination";
+            String peticion ="select title, amount,iddestination, image from tbdestination";
             result = estado.executeQuery(peticion);
 
 
@@ -117,6 +109,9 @@ public class DestinoMain extends Fragment {
 
                 Button btnDestiny = new Button(getActivity());
                 btnDestiny.setText("Mas Detalles");
+                int id=result.getInt("iddestination");
+                btnDestiny.setId(id);
+                btnDestiny.setOnClickListener(this);
 
 
                 btnDestiny.setLayoutParams(paramsBtn);
@@ -174,7 +169,6 @@ public class DestinoMain extends Fragment {
         }
         return codImage;
     }
-
 
 
 

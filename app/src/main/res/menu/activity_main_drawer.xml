@@ -4,8 +4,15 @@
     tools:showIn="navigation_view"
     android:id="@+id/nav_menu">
 
+
+
     <group android:checkableBehavior="single"
         >
+        <item
+            android:id="@+id/nav_name"
+            android:title="Usuario"
+            android:visible="false"
+            />
         <item
             android:id="@+id/nav_home"
             android:title="Inicio"
@@ -13,6 +20,9 @@
         <item
             android:id="@+id/nav_destinos"
             android:title="Destinos Turísticos" />
+        <item
+            android:id="@+id/nav_top_ten"
+            android:title="Top Favoritos" />
         <item
             android:id="@+id/nav_intereses"
             android:title="Intereses Turísticos" />
@@ -24,11 +34,16 @@
             android:title="Danos tu Opinión" />
         <item
             android:id="@+id/nav_favorito"
-            android:title="Favoritos"
+            android:title="Mis Favoritos"
             android:visible="false"/>
         <item
-            android:id="@+id/nav_f"
-            android:title= ""/>
+            android:id="@+id/nav_user"
+            android:title= ""
+            android:visible="false"/>
+        <item
+            android:id="@+id/nav_fav"
+            android:title= ""
+            />
 
         <item
             android:id="@+id/nav_registro"

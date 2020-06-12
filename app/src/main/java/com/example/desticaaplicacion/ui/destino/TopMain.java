@@ -1,61 +1,47 @@
-package com.example.desticaaplicacion.ui.login;
+package com.example.desticaaplicacion.ui.destino;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.desticaaplicacion.ConnectionClass;
 import com.example.desticaaplicacion.MainActivity;
 import com.example.desticaaplicacion.R;
-import com.example.desticaaplicacion.ui.ListAdapter;
-import com.example.desticaaplicacion.ui.destino.DestinoViewModel;
-import com.example.desticaaplicacion.ui.destino.InfoAtractivo;
-import com.example.desticaaplicacion.ui.intereses.Recomendaciones;
 import com.google.android.material.navigation.NavigationView;
-
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class FavoritoMain extends Fragment implements View.OnClickListener {
 
-    private AppBarConfiguration mAppBarConfiguration;
+public class TopMain extends Fragment implements View.OnClickListener {
+
     private DestinoViewModel homeViewModel;
     ConnectionClass connectionClass;
+    TextView t;
     String userID;
-
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
                 ViewModelProviders.of(this).get(DestinoViewModel.class);
-        View root = inflater.inflate(R.layout.layout_favoritos, container, false);
+        View root = inflater.inflate(R.layout.layout_top_ten, container, false);
+        t= (TextView) root.findViewById(R.id.txtDescription);
 
         NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
 
@@ -63,25 +49,23 @@ public class FavoritoMain extends Fragment implements View.OnClickListener {
         MenuItem item= menuNav.findItem(R.id.nav_user);
         userID=item.getTitle()+"";
 
-
         connectionClass = new ConnectionClass();
         addRows(root);
-
         return root;
 
     }
-
     @Override
     public void onClick(View v) {
         String id= v.getId()+"";
         //t.setText(id);
         Intent mainIntent = new Intent(getActivity(),
-                InfoAtractivo.class);
+               InfoAtractivo.class);
         mainIntent.putExtra("EXTRA_SESSION_DESTINATION", id);
-        mainIntent.putExtra("EXTRA_SESSION_USER", userID);
+        mainIntent.putExtra("EXTRA_SESSION_DESTINATION", userID);
 
         startActivity(mainIntent);
     }
+
 
     private void addRows(View root) {
 
@@ -93,12 +77,10 @@ public class FavoritoMain extends Fragment implements View.OnClickListener {
             Connection con = connectionClass.CONN();
             Statement estado = con.createStatement();
 
-            String idUser="10";
-            String peticion ="select d.title, f.iduser, f.iddestination, d.image from tbdestination d, tbfavorite f where" +
-                    " iduser="+userID+" and \n" +
-                    "d.iddestination = f.iddestination;";
+            String peticion ="SELECT count(t.iddestination), t.iddestination, g.title, g.image FROM tbfavorite t, tbdestination g " +
+                    "where t.iddestination=g.iddestination GROUP BY iddestination\n" +
+                    "ORDER BY count(t.iddestination) desc limit 10 ;";
             result = estado.executeQuery(peticion);
-
 
         } catch (SQLException e) {
 
@@ -181,11 +163,8 @@ public class FavoritoMain extends Fragment implements View.OnClickListener {
             case "img10":
                 codImage=R.drawable.img10;
                 break;
-
         }
         return codImage;
     }
-
-
 
 }

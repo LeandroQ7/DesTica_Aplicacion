@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:gravity="center"
-            android:text="Mis Favoritos"
+            android:text="Top 10 Destinos"
             android:textColor="#070707"
             android:textSize="24sp" />
 

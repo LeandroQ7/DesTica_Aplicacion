@@ -1,6 +1,7 @@
 package com.example.desticaaplicacion.ui.login;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +15,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -47,7 +51,6 @@ public class RegistroMain extends Fragment {
 
         user = root.findViewById(R.id.etNombre);
         password1 = root.findViewById(R.id.etpassword);
-        password2 = root.findViewById(R.id.etpassword2);
 
         Button btnRegister = root.findViewById(R.id.btnRegister);
        edit2= root.findViewById(R.id.edit);
@@ -58,11 +61,14 @@ public class RegistroMain extends Fragment {
 
                 txtUser= user.getText().toString();
                 txtPass1= password1.getText().toString();
-                txtPass2= password2.getText().toString();
 
 
                 connectionClass = new ConnectionClass();
                 new RegistroMain.setUser().execute();
+
+                edit2.setText("Registro Completado con Exito");
+
+
             }
         });
         return root;
@@ -73,7 +79,7 @@ public class RegistroMain extends Fragment {
         protected String doInBackground(String... strings) {
             try {
                 Connection con = connectionClass.CONN();
-                edit2.setText(txtUser);
+
                 String query="INSERT INTO tbuser \n" +
                         "(nameUser,\n" +
                         "passwordUser)\n" +
@@ -82,6 +88,7 @@ public class RegistroMain extends Fragment {
 
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate(query);
+
 
 
             }
