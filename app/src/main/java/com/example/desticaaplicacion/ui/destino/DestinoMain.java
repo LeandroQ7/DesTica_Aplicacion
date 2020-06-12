@@ -24,7 +24,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.desticaaplicacion.ConnectionClass;
 import com.example.desticaaplicacion.R;
 import com.example.desticaaplicacion.ui.ListAdapter;
-import com.example.desticaaplicacion.ui.login.Favoritos;
+//import com.example.desticaaplicacion.ui.login.Favoritos;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -49,14 +49,14 @@ public class DestinoMain extends Fragment {
 
         final ImageView img1 = root.findViewById(R.id.img1);
         final ImageView img2 = root.findViewById(R.id.img2);
-        final ImageView img3 = root.findViewById(R.id.img3);
+       /* final ImageView img3 = root.findViewById(R.id.img3);
         final ImageView img4 = root.findViewById(R.id.img4);
         final ImageView img5 = root.findViewById(R.id.img5);
         final ImageView img6 = root.findViewById(R.id.img6);
         final ImageView img7 = root.findViewById(R.id.img7);
-        final ImageView img8 = root.findViewById(R.id.img8);
+        final ImageView img8 = root.findViewById(R.id.img8);*/
 
-        final TextView txt = root.findViewById(R.id.txt1);
+       /* final TextView txt = root.findViewById(R.id.txt1);*/
 
 
         connectionClass = new ConnectionClass();
