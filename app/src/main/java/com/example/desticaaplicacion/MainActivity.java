@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        texto = (TextView)findViewById(R.id.textbd);
+        //texto = (TextView)findViewById(R.id.textbd);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        final Button btnPrueba = (Button) findViewById(R.id.btnPrueba);
+       // final Button btnPrueba = (Button) findViewById(R.id.btnPrueba);
 
         //modifica las opciones del menu, con un usuario logueado
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
@@ -88,21 +88,6 @@ public class MainActivity extends AppCompatActivity {
         //bd action
 
 
-        btnPrueba.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-
-
-                //MenuItem mi = navigationView.getMenu().add(Menu.NONE, Menu.NONE, Menu.NONE, "Menu Item 1");
-                Menu menuNav = navigationView.getMenu();
-                MenuItem logoutItem = menuNav.findItem(R.id.nav_registro);
-                logoutItem.setVisible(false);
-                btnPrueba.setText(logoutItem.getTitle());
-                //connectionClass = new ConnectionClass();
-                //new getCurso().execute();
-            }
-        });
 
 
     }
