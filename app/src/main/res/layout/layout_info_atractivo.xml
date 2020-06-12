@@ -125,7 +125,7 @@
                     android:textSize="18sp" />
 
                 <CheckBox
-                    android:id="@+id/checkBox"
+                    android:id="@+id/addFavorite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Favorito" />
