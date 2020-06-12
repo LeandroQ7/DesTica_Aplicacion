@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
         //modifica las opciones del menu, con un usuario logueado
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
+        String userId = getIntent().getStringExtra("EXTRA_SESSION_USER");
         if (TextUtils.isEmpty(sessionId)) {
 
         }else{
@@ -80,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                 loginItems= menuNav.findItem(R.id.nav_favorito);
                 loginItems.setVisible(true);
 
+                loginItems= menuNav.findItem(R.id.nav_user);
+                loginItems.setTitle(userId);
+
+
             }
 
         }
@@ -89,60 +94,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
     }
 
 
-
-
-public class getCurso extends AsyncTask<String,Void, ResultSet> {
-
-    @Override
-    protected ResultSet doInBackground(String... strings) {
-
-        try {
-
-            Connection con = connectionClass.CONN();
-
-            Statement estado = con.createStatement();
-
-            String peticion ="SELECT * FROM dbdestica.tbuser limit 1";
-            ResultSet result = estado.executeQuery(peticion);
-
-            return result;
-        } catch (SQLException e) {
-
-        }
-        return null;
-    }
-
-    @Override
-    protected void onPostExecute(ResultSet result) {
-
-        try {
-
-
-            while (result.next()) {
-                texto.setText(result.getString("email"));
-
-            }
-
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
-}
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
 
     @Override
     public boolean onSupportNavigateUp() {

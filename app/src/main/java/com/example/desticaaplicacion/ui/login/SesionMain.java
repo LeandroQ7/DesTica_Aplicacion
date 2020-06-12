@@ -40,11 +40,11 @@ public class SesionMain extends Fragment {
                 Intent mainIntent = new Intent(getActivity(),
                         MainActivity.class);
                 mainIntent.putExtra("EXTRA_SESSION_ID", "login");
+                mainIntent.putExtra("EXTRA_SESSION_USER", "4");
                 startActivity(mainIntent);
 
             }
         });
-
 
         return root;
 

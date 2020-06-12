@@ -13,6 +13,11 @@
 
     </fragment>
 
+    <fragment
+        android:id="@+id/nav_top_ten"
+        android:name="com.example.desticaaplicacion.ui.destino.TopMain"
+        android:label="Top Favoritos"
+        tools:layout="@layout/layout_top_ten" />
 
     <fragment
         android:id="@+id/nav_destinos"
@@ -21,7 +26,7 @@
         tools:layout="@layout/layout_destino" />
     <fragment
         android:id="@+id/nav_fav"
-        android:name="com.example.desticaaplicacion.ui.login.Favoritos"
+        android:name="com.example.desticaaplicacion.ui.destino.DestinoMain"
         android:label="@string/menu_gallery"
         tools:layout="@layout/layout_destino" />
 
@@ -55,7 +60,12 @@
     <fragment
         android:id="@+id/nav_favorito"
         android:name="com.example.desticaaplicacion.ui.login.FavoritoMain"
-        android:label="Favoritos"
+        android:label="Mis Favoritos"
+        tools:layout="@layout/layout_favoritos" />
+    <fragment
+        android:id="@+id/nav_logout"
+        android:name="com.example.desticaaplicacion.ui.login.CerrarSesion"
+        android:label="Cerrar Sesion"
         tools:layout="@layout/layout_favoritos" />
 
 

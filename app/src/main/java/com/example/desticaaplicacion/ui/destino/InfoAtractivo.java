@@ -5,23 +5,34 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.desticaaplicacion.ConnectionClass;
 import com.example.desticaaplicacion.R;
 import com.example.desticaaplicacion.ui.login.RegistroMain;
+import com.google.android.material.navigation.NavigationView;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class InfoAtractivo extends AppCompatActivity {
 
     ConnectionClass connectionClass;
+    String destinationId;
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +41,28 @@ public class InfoAtractivo extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Actividad");
+        connectionClass = new ConnectionClass();
 
+        destinationId = getIntent().getStringExtra("EXTRA_SESSION_DESTINATION");
+        userId = getIntent().getStringExtra("EXTRA_SESSION_USER");
+
+        //Establecer datos del destino
+        setDestinationData(destinationId);
 
 
         CheckBox satView = (CheckBox)findViewById(R.id.addFavorite);
+
+        if(TextUtils.isEmpty(userId)){
+                satView.setVisibility(View.GONE);
+        }else{
+            verifyFavorite();
+        }
+
+
+
         satView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
-            Button btnRegister = (Button) findViewById(R.id.btnRegister);
+
 
             @Override
             public void onCheckedChanged(CompoundButton buttonView,boolean isChecked) {
@@ -59,6 +85,107 @@ public class InfoAtractivo extends AppCompatActivity {
         }
         );
     }
+
+    private void verifyFavorite() {
+        ResultSet result = null;
+
+        try {
+
+            Connection con = connectionClass.CONN();
+            Statement estado = con.createStatement();
+            String peticion ="SELECT * from tbfavorite where iduser="+userId+" and iddestination="+destinationId+" ;";
+            result = estado.executeQuery(peticion);
+        } catch (SQLException e) {
+        }
+        try {
+            if (result.next() == false) {
+
+            }else{
+                CheckBox satView = (CheckBox)findViewById(R.id.addFavorite);
+                satView.setChecked(true);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void setDestinationData(String destinationId) {
+        ResultSet result = null;
+
+        try {
+
+            Connection con = connectionClass.CONN();
+            Statement estado = con.createStatement();
+            String peticion ="SELECT amount, location, description, title, image FROM dbdestica.tbdestination" +
+                    " where iddestination="+destinationId+" ;";
+            result = estado.executeQuery(peticion);
+        } catch (SQLException e) {
+        }
+        try {
+            while (result.next()) {
+                TextView text= (TextView) findViewById(R.id.txtDescription);
+                text.setText(result.getString("description"));
+
+                ImageView img= (ImageView) findViewById(R.id.img1);
+                int imageSource= getImage(result.getString("image"));
+                img.setImageResource(imageSource);
+
+                text= (TextView) findViewById(R.id.txtPrice);
+                text.setText(result.getString("amount"));
+
+                text= (TextView) findViewById(R.id.txtPlace);
+                text.setText(result.getString("amount"));
+
+                text= (TextView) findViewById(R.id.txtOptionalInfo);
+                text.setText(result.getString("title"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    private int getImage(String image) {
+        int codImage=0;
+        switch (image){
+            case "img1":
+                codImage=R.drawable.img1;
+                break;
+            case "img2":
+                codImage=R.drawable.img2;
+                break;
+            case "img3":
+                codImage=R.drawable.img3;
+                break;
+            case "img4":
+                codImage=R.drawable.img4;
+                break;
+            case "img5":
+                codImage=R.drawable.img5;
+                break;
+            case "img6":
+                codImage=R.drawable.img6;
+                break;
+            case "img7":
+                codImage=R.drawable.img7;
+                break;
+            case "img8":
+                codImage=R.drawable.img8;
+                break;
+            case "img9":
+                codImage=R.drawable.img9;
+                break;
+            case "img10":
+                codImage=R.drawable.img10;
+                break;
+        }
+        return codImage;
+    }
+
     public class setFavorite extends AsyncTask<String,String,String> {
 
         @Override
@@ -67,7 +194,7 @@ public class InfoAtractivo extends AppCompatActivity {
                 Connection con = connectionClass.CONN();
 
                 String query="INSERT INTO tbfavorite (iduser,iddestination)\n" +
-                        "VALUES (11,13);";
+                        "VALUES ("+userId+","+destinationId+");";
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate(query);
             }
@@ -85,7 +212,7 @@ public class InfoAtractivo extends AppCompatActivity {
             try {
                 Connection con = connectionClass.CONN();
 
-                String query="DELETE FROM tbfavorite WHERE iduser=11 and iddestination=13;";
+                String query="DELETE FROM tbfavorite WHERE iduser="+userId+" and iddestination="+destinationId+";";
                 Statement stmt = con.createStatement();
                 stmt.executeUpdate(query);
             }
