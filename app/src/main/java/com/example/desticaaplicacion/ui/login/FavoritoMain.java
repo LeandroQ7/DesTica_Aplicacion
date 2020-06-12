@@ -44,7 +44,7 @@ public class FavoritoMain extends  Fragment {
     ListView lView;
 
     ListAdapter lAdapter;
-    Favoritos fav;
+   // Favoritos fav;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,12 +54,13 @@ public class FavoritoMain extends  Fragment {
 
 
         //metodo(root, customList);
+        /*
         Intent mainIntent = new Intent(getActivity(), Favoritos.class);
         mainIntent.putExtra("EXTRA_SESSION_ID", "login");
         startActivity(mainIntent);
 
         getActivity().finish();
-
+        */
 
         return null;
     }

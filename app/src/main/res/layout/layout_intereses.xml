@@ -54,7 +54,7 @@
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                    android:layout_height="wrap_content"
                     android:text="Dinos cuanto mínimo de dinero dispones ?"
                     android:textStyle="bold" />
 
@@ -63,9 +63,9 @@
                     android:layout_height="match_parent" />
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/txtmin"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="#AFAFAF"
                     android:ems="10"
                     android:inputType="number" />
@@ -73,14 +73,14 @@
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="match_parent"
-                    android:layout_height="66dp"
+                    android:layout_height="wrap_content"
                     android:text="Dinos cuanto máximo de dinero dispones ?"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/editText3"
+                    android:id="@+id/txtmax"
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="number" />
 
@@ -91,14 +91,17 @@
                     android:ems="10"
                     android:gravity="start|top"
                     android:inputType="textMultiLine"
-                    android:text="Ayuda: Es un monto aproximado para que nosotros podamos encontrar destinos con esa cantidad que digitaste." />
+                    android:text="Ayuda: Es un monto aproximado para que nosotros podamos encontrar destinos con esa cantidad que digitaste."
+                    android:textSize="12sp" />
+
                 <TextView
                     android:id="@+id/textView33"
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                    android:layout_height="wrap_content"
                     android:text="Ambiente de destino buscar" />
 
                 <RadioGroup
+                    android:id="@+id/radioAmbiente"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
@@ -112,29 +115,30 @@
                         android:id="@+id/radioButton2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Destino en Ciudad" />
+                        android:text="Ciudad" />
 
                     <RadioButton
                         android:id="@+id/radioButton3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="En Montaña" />
+                        android:text="Montaña" />
 
                     <RadioButton
                         android:id="@+id/radioButton4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Parques, lugares historicos" />
+                        android:text="Historico" />
 
                 </RadioGroup>
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="match_parent"
-                    android:layout_height="52dp"
+                    android:layout_height="wrap_content"
                     android:text="Tipo de paquete" />
 
                 <RadioGroup
+                    android:id="@+id/radioPaquete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
 
@@ -148,13 +152,19 @@
                         android:id="@+id/radio2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Individual" />
+                        android:text="Negocio" />
 
                     <RadioButton
                         android:id="@+id/radio3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Personalizado" />
+                        android:text="Deportivo" />
+
+                    <RadioButton
+                        android:id="@+id/radio4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cultural" />
 
 
 

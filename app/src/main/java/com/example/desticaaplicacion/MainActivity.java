@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+        //texto = (TextView)findViewById(R.id.textbd);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
+       // final Button btnPrueba = (Button) findViewById(R.id.btnPrueba);
 
         //modifica las opciones del menu, con un usuario logueado
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
@@ -83,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+
+        //bd action
 
 
 
@@ -132,6 +135,14 @@ public class getCurso extends AsyncTask<String,Void, ResultSet> {
     }
 }
 
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
