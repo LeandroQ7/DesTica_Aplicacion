@@ -42,6 +42,11 @@ public class DestinoMain extends Fragment implements View.OnClickListener {
 
         NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
 
+
+        final ImageView img1 = root.findViewById(R.id.img1);
+        final ImageView img2 = root.findViewById(R.id.img2);
+
+
         Menu menuNav = navigationView.getMenu();
         MenuItem item= menuNav.findItem(R.id.nav_user);
         userID=item.getTitle()+"";
