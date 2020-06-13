@@ -17,7 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.desticaaplicacion.ConnectionClass;
+import com.example.desticaaplicacion.*;
 import com.example.desticaaplicacion.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -36,16 +36,8 @@ public class DestinoMain extends Fragment implements View.OnClickListener {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        homeViewModel =
-                ViewModelProviders.of(this).get(DestinoViewModel.class);
         View root = inflater.inflate(R.layout.layout_destino, container, false);
-
         NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
-
-
-        final ImageView img1 = root.findViewById(R.id.img1);
-        final ImageView img2 = root.findViewById(R.id.img2);
-
 
         Menu menuNav = navigationView.getMenu();
         MenuItem item= menuNav.findItem(R.id.nav_user);
@@ -55,7 +47,6 @@ public class DestinoMain extends Fragment implements View.OnClickListener {
         addRows(root);
 
         return root;
-
     }
 
     @Override

@@ -18,9 +18,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.desticaaplicacion.ConnectionClass;
+import com.example.desticaaplicacion.*;
 import com.example.desticaaplicacion.R;
-import com.example.desticaaplicacion.ui.login.RegistroMain;
+import com.example.desticaaplicacion.ui.login.*;
 import com.google.android.material.navigation.NavigationView;
 
 import java.sql.Connection;
