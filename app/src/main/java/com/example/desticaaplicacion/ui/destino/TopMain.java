@@ -61,7 +61,7 @@ public class TopMain extends Fragment implements View.OnClickListener {
         Intent mainIntent = new Intent(getActivity(),
                InfoAtractivo.class);
         mainIntent.putExtra("EXTRA_SESSION_DESTINATION", id);
-        mainIntent.putExtra("EXTRA_SESSION_DESTINATION", userID);
+        mainIntent.putExtra("EXTRA_SESSION_USER", userID);
 
         startActivity(mainIntent);
     }

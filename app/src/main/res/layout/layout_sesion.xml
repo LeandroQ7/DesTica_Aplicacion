@@ -57,7 +57,8 @@
             android:gravity="center_vertical"
             android:text="¿Olvidaste tu constraseña?"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#0E8AEE" />
+            android:textColor="#0E8AEE"
+            android:visibility="invisible" />
     </LinearLayout>
 
 
