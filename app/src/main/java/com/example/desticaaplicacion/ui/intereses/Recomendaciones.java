@@ -10,29 +10,40 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.desticaaplicacion.*;
 import com.example.desticaaplicacion.R;
 import com.example.desticaaplicacion.ui.destino.InfoAtractivo;
+import com.google.android.material.navigation.NavigationView;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
-public class Recomendaciones extends AppCompatActivity {
+public class Recomendaciones extends AppCompatActivity implements View.OnClickListener {
 
     ConnectionClass connectionClass;
     ArrayList<Destiny> lista = new ArrayList<Destiny>();
     TextView txtresultado;
+    String userID;
+
+    TextView Prueba;
     String ambiente;
     String paquete;
     String camino;
@@ -43,53 +54,30 @@ public class Recomendaciones extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recomendaciones);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Destinos Encontrados");
 
-        txtresultado = findViewById(R.id.txtresultado);
+
+        Prueba = findViewById(R.id.txtPrueba);
+
 
         //valores que ingreso el usuario
         ambiente = getIntent().getStringExtra("EXTRA_SESSION_AMBIENTE");
         paquete = getIntent().getStringExtra("EXTRA_SESSION_PAQUETE");
         camino = getIntent().getStringExtra("EXTRA_SESSION_CAMINO");
         tiempo = getIntent().getStringExtra("EXTRA_SESSION_TIEMPO");
+        userID = getIntent().getStringExtra("EXTRA_SESSION_IDUSER");
 
-        txtresultado.setText("1");
+
         connectionClass = new ConnectionClass();
         new Recomendaciones.getEuclides().execute();
-        txtresultado.setText("2");
-
-        Iterator<Destiny> it = lista.iterator();
-// mientras al iterador queda proximo juego
-        while(it.hasNext()){
-            Destiny item=it.next();
-           // System.out.println(item.toString());
-            //System.out.println("tipo: " + item.getImage());
-            txtresultado.setText(item.toString());
-        }
 
 
-        final Button btn1 = (Button) findViewById(R.id.detalle1);
 
 
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iniciarActivity();
-
-            }
-
-        });
-
-        final Button btn2 = (Button) findViewById(R.id.detalle2);
-
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                iniciarActivity();
-            }
-        });
 
 
     }
@@ -98,6 +86,18 @@ public class Recomendaciones extends AppCompatActivity {
         Intent intent = new Intent(this, InfoAtractivo.class);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        String id= v.getId()+"";
+        //t.setText(id);
+        Intent mainIntent = new Intent(this,
+                InfoAtractivo.class);
+        mainIntent.putExtra("EXTRA_SESSION_DESTINATION", id);
+        mainIntent.putExtra("EXTRA_SESSION_USER", userID);
+
+        startActivity(mainIntent);
     }
 
 
@@ -125,6 +125,35 @@ public class Recomendaciones extends AppCompatActivity {
             int iteracion=0;
             double distanciaActual=0, distanciaNueva=0, returalgoritmo=0;
             int valorambiente, valorpaquete, valorcamino, valortiempo;
+
+            switch (ambiente){ /*Digitado por Usuario*/
+                case "Playa":  valorambiente=1; break;
+                case "Ciudad":   valorambiente=2; break;
+                case "Montaña":   valorambiente=3; break;
+                case "Historico":   valorambiente=4; break;
+                default: valorambiente=1; break;
+            }
+            switch (paquete){ /*Digitado por Usuario*/
+                case "Familiar":  valorpaquete=1; break;
+                case "Negocio":   valorpaquete=2; break;
+                case "Deportivo": valorpaquete=3; break;
+                case "Cultural":  valorpaquete=4; break;
+                default: valorpaquete=1; break;
+            }
+            switch (camino){ /*Digitado por Usuario*/
+                case "Asfalto":  valorcamino=1; break;
+                case "Lastre":   valorcamino=2; break;
+                case "Tierra":   valorcamino=3; break;
+                default: valorcamino=1; break;
+            }
+            switch (tiempo){ /*Digitado por Usuario*/
+                case "Llovioso":  valortiempo=1; break;
+                case "Caluroso":   valortiempo=2; break;
+                case "Humedo":   valortiempo=3; break;
+                default: valortiempo=1; break;
+            }
+        
+
             try {
                 while (result.next()) {
                     RSiddestino = result.getString("iddestination");
@@ -162,34 +191,6 @@ public class Recomendaciones extends AppCompatActivity {
                         default: dbtiempo=1; break;
                     }
 
-                    switch (ambiente){ /*Digitado por Usuario*/
-                        case "Playa":  valorambiente=1; break;
-                        case "Ciudad":   valorambiente=2; break;
-                        case "Montaña":   valorambiente=3; break;
-                        case "Historico":   valorambiente=4; break;
-                        default: valorambiente=1; break;
-                    }
-                    switch (paquete){ /*Base de datos*/
-                        case "Familiar":  valorpaquete=1; break;
-                        case "Negocio":   valorpaquete=2; break;
-                        case "Deportivo": valorpaquete=3; break;
-                        case "Cultural":  valorpaquete=4; break;
-                        default: valorpaquete=1; break;
-                    }
-                    switch (camino){ /*Base de datos*/
-                        case "Asfalto":  valorcamino=1; break;
-                        case "Lastre":   valorcamino=2; break;
-                        case "Tierra":   valorcamino=3; break;
-                        default: valorcamino=1; break;
-                    }
-                    switch (tiempo){ /*Base de datos*/
-                        case "Llovioso":  valortiempo=1; break;
-                        case "Caluroso":   valortiempo=2; break;
-                        case "Humedo":   valortiempo=3; break;
-                        default: valortiempo=1; break;
-                    }
-
-                    if(iteracion==0){
 
                          distanciaActual=sqrt(
                                 pow(valorambiente-dblocation,2)+
@@ -197,34 +198,120 @@ public class Recomendaciones extends AppCompatActivity {
                                 pow(valorcamino-dbcamino,2)+
                                 pow(valortiempo-dbtiempo,2)
                         ); //aplica formula de distancia eucladiana
-                        iteracion++;
-                    }else{
-                        distanciaNueva=sqrt(
-                                pow(valorambiente-dblocation,2)+
-                                        pow(valorpaquete-dbtypetravel,2)+
-                                        pow(valorcamino-dbcamino,2)+
-                                        pow(valortiempo-dbtiempo,2)
-                        ); //aplica formula de distancia eucladiana
-                        if(distanciaActual<=distanciaNueva){
 
-                        }else{
-                            distanciaActual=distanciaNueva;  //mantiene distancia actual como la menor
-                            returalgoritmo=dblocation;
-                        }/*else*/
-                    }/*else*/
+
 
                     Destiny destino = new Destiny(Integer.parseInt(RSiddestino),distanciaActual,RStitle, RSimage);
-                   /*DEBUGEO*/
+                   /*DEBUGEO
                     txtresultado.setText(" ambiente: "+valorambiente+" paquete:"+
                             valorpaquete+" camino: "+valorcamino+" tiempo:"+valortiempo+
-                            " distanciaActual: "+distanciaActual+"  Objeto:"+destino);
+                            " distanciaActual: "+distanciaActual+"  Objeto:"+destino);*/
                     lista.add(destino);
 
+
                 }/*while*/
+                
+                setListOfDestiny();
+
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
 
     }
+
+
+
+    private void setListOfDestiny() {
+
+        LinearLayout ll = (LinearLayout) findViewById(R.id.LinearLayout1);
+
+        Collections.sort(lista, new Comparator<Destiny>() {
+
+            @Override
+            public int compare(Destiny p1, Destiny p2) {
+                return Double.compare(p1.getDistanciacalculada(), p2.getDistanciacalculada());
+
+            }
+
+        });
+
+
+        for (Destiny destiny: lista) {
+
+            ImageView ii= new ImageView(this);
+
+            int imageSource= getImage(destiny.getImage());
+
+            ii.setImageResource(imageSource);
+            RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(1000,500);
+            ii.setLayoutParams(params);
+
+            RelativeLayout.LayoutParams paramsBtn=new RelativeLayout.LayoutParams(400,100);
+            TextView title = new TextView(this);
+            title.setText(destiny.getTitle());
+            title.setGravity(1);
+
+
+            Button btnDestiny = new Button(this);
+            btnDestiny.setText("Mas Detalles");
+            int id=destiny.getIddestino();
+            btnDestiny.setId(id);
+            btnDestiny.setOnClickListener(this);
+
+
+            btnDestiny.setLayoutParams(paramsBtn);
+
+            ll.addView(ii);
+            ll.addView(title);
+            ll.addView(btnDestiny);
+
+
+        }
+
+
+            //texto.setText(result.getString("email"));
+
+    }
+
+    private int getImage(String image) {
+        int codImage=0;
+        switch (image){
+            case "img1":
+                codImage=R.drawable.img1;
+                break;
+            case "img2":
+                codImage=R.drawable.img2;
+                break;
+            case "img3":
+                codImage=R.drawable.img3;
+                break;
+            case "img4":
+                codImage=R.drawable.img4;
+                break;
+            case "img5":
+                codImage=R.drawable.img5;
+                break;
+            case "img6":
+                codImage=R.drawable.img6;
+                break;
+            case "img7":
+                codImage=R.drawable.img7;
+                break;
+            case "img8":
+                codImage=R.drawable.img8;
+                break;
+            case "img9":
+                codImage=R.drawable.img9;
+                break;
+            case "img10":
+                codImage=R.drawable.img10;
+                break;
+
+        }
+        return codImage;
+    }
 }
+
+

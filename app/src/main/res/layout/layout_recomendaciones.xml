@@ -12,7 +12,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/txtPrueba"
             android:layout_width="match_parent"
             android:layout_height="77dp"
             android:gravity="center"
@@ -23,71 +23,24 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txtresultado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-
-        <TextView
             android:id="@+id/textView24"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:text="Hemos encontrado varios sitios que ojalá sean de tu agrado"
             android:textAlignment="center" />
 
-        <TextView
-            android:id="@+id/textView4"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:text="Seleccione su destino" />
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TableRow
+            <LinearLayout
+                android:id="@+id/LinearLayout1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="vertical"/>
+        </ScrollView>
 
-                <TextView
-                    android:id="@+id/textView28"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Volcan Arenal" />
-
-                <Button
-                    android:id="@+id/detalle1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ver Detalles" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/textView29"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Playa Limon" />
-
-                <Button
-                    android:id="@+id/detalle2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ver Detalles" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </TableLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

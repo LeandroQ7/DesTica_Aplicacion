@@ -19,6 +19,8 @@ public class Destiny {
 
     public int getIddestino() { return this.iddestination; }
     public String getImage() { return this.image; }
+    public String getTitle() { return this.title; }
+    public Double getDistanciacalculada() { return this.distanciacalculada; }
 
     @Override
     public String toString(){

@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -25,6 +27,7 @@ import com.example.desticaaplicacion.ConnectionClass;
 import com.example.desticaaplicacion.MainActivity;
 import com.example.desticaaplicacion.R;
 import com.example.desticaaplicacion.ui.encuesta.EncuestaMain;
+import com.google.android.material.navigation.NavigationView;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -42,6 +45,12 @@ public class InteresesMain extends Fragment {
         interesesViewModel =
                 ViewModelProviders.of(this).get(InteresesViewModel.class);
         final View root = inflater.inflate(R.layout.layout_intereses, container, false);
+
+        NavigationView navigationView = (NavigationView) getActivity().findViewById(R.id.nav_view);
+
+        Menu menuNav = navigationView.getMenu();
+        MenuItem item= menuNav.findItem(R.id.nav_user);
+        final String userID=item.getTitle()+"";
 
         min = root.findViewById(R.id.txtmin);
         max = root.findViewById(R.id.txtmax);
@@ -89,22 +98,11 @@ public class InteresesMain extends Fragment {
                 mainIntent.putExtra("EXTRA_SESSION_PAQUETE", txtpaquete);
                 mainIntent.putExtra("EXTRA_SESSION_CAMINO", txtcamino);
                 mainIntent.putExtra("EXTRA_SESSION_TIEMPO", txttiempo);
+                mainIntent.putExtra("EXTRA_SESSION_IDUSER", userID);
                 startActivity(mainIntent);
-                mensaje();
+
             }
 
-            public void mensaje(){
-                AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
-                alertDialog.setTitle("Búsqueda de Destinos Turísticos");
-                alertDialog.setMessage("Busqueda completada.");
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
-            }
         });
 
         return root;

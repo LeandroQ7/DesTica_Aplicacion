@@ -21,7 +21,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/txtPrueba"
                     android:layout_width="match_parent"
                     android:layout_height="77dp"
                     android:gravity="center"
