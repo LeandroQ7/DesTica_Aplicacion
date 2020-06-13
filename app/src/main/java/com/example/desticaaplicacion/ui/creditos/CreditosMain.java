@@ -18,7 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.desticaaplicacion.R;
 import com.example.desticaaplicacion.*;
-import com.example.desticaaplicacion.ui.encuesta.EncuestaMain;
+import com.example.desticaaplicacion.ui.encuesta.*;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -60,7 +60,7 @@ public class CreditosMain extends Fragment {
         protected void onPostExecute(ResultSet result) {
             try {
                 while (result.next()) {
-                    puntaje.setText(result.getString("promedio")); /*CON ESTO SE CAE*/
+                    puntaje.setText(result.getString("promedio"));
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
