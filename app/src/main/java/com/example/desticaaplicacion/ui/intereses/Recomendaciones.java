@@ -278,37 +278,18 @@ public class Recomendaciones extends AppCompatActivity implements View.OnClickLi
     private int getImage(String image) {
         int codImage=0;
         switch (image){
-            case "img1":
-                codImage=R.drawable.img1;
+            case "playa":
+                codImage=R.drawable.playa;
                 break;
-            case "img2":
-                codImage=R.drawable.img2;
+            case "montana":
+                codImage=R.drawable.montana;
                 break;
-            case "img3":
-                codImage=R.drawable.img3;
+            case "ciudad":
+                codImage=R.drawable.ciudad;
                 break;
-            case "img4":
-                codImage=R.drawable.img4;
+            case "historico":
+                codImage=R.drawable.historico;
                 break;
-            case "img5":
-                codImage=R.drawable.img5;
-                break;
-            case "img6":
-                codImage=R.drawable.img6;
-                break;
-            case "img7":
-                codImage=R.drawable.img7;
-                break;
-            case "img8":
-                codImage=R.drawable.img8;
-                break;
-            case "img9":
-                codImage=R.drawable.img9;
-                break;
-            case "img10":
-                codImage=R.drawable.img10;
-                break;
-
         }
         return codImage;
     }
