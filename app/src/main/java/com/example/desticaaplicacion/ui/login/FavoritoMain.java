@@ -181,6 +181,63 @@ public class FavoritoMain extends Fragment implements View.OnClickListener {
             case "img10":
                 codImage=R.drawable.img10;
                 break;
+            case "bosque":
+                codImage=R.drawable.bosque;
+                break;
+            case "bosque2":
+                codImage=R.drawable.bosque2;
+                break;
+            case "bosque3":
+                codImage=R.drawable.bosque3;
+                break;
+            case "cascada":
+                codImage=R.drawable.cascada;
+                break;
+            case "cascada2":
+                codImage=R.drawable.cascada2;
+                break;
+            case "cascada3":
+                codImage=R.drawable.cascada3;
+                break;
+            case "museo":
+                codImage=R.drawable.museo;
+                break;
+            case "museo2":
+                codImage=R.drawable.museo2;
+                break;
+            case "museo3":
+                codImage=R.drawable.museo3;
+                break;
+            case "playa":
+                codImage=R.drawable.playa;
+                break;
+            case "playa2":
+                codImage=R.drawable.playa2;
+                break;
+            case "playa3":
+                codImage=R.drawable.playa3;
+                break;
+            case "resort":
+                codImage=R.drawable.resort;
+                break;
+            case "resort2":
+                codImage=R.drawable.resort2;
+                break;
+            case "resort3":
+                codImage=R.drawable.resort3;
+                break;
+            case "restaurante":
+                codImage=R.drawable.restaurante;
+                break;
+            case "restaurante2":
+                codImage=R.drawable.restaurante2;
+                break;
+            case "restaurante3":
+                codImage=R.drawable.restaurante3;
+                break;
+            default:
+                codImage=R.drawable.img1;
+                break;
 
         }
         return codImage;

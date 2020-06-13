@@ -63,6 +63,8 @@ public class RegistroMain extends Fragment {
                 txtPass1= password1.getText().toString();
 
 
+
+
                 connectionClass = new ConnectionClass();
                 new RegistroMain.setUser().execute();
 
