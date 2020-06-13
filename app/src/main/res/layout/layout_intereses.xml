@@ -51,48 +51,9 @@
 
                 </RadioGroup>
 
-                <TextView
-                    android:id="@+id/textView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Dinos cuanto mínimo de dinero dispones ?"
-                    android:textStyle="bold" />
-
                 <RadioGroup
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
-
-                <EditText
-                    android:id="@+id/txtmin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#AFAFAF"
-                    android:ems="10"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/textView8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Dinos cuanto máximo de dinero dispones ?"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/txtmax"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="number" />
-
-                <EditText
-                    android:id="@+id/editText5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:gravity="start|top"
-                    android:inputType="textMultiLine"
-                    android:text="Ayuda: Es un monto aproximado para que nosotros podamos encontrar destinos con esa cantidad que digitaste."
-                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/textView33"

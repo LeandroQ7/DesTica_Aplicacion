@@ -36,8 +36,8 @@ public class InteresesMain extends Fragment {
 
     private InteresesViewModel interesesViewModel;
     ConnectionClass connectionClass;
-    EditText min, max;
-    String txtmin, txtmax, txtambiente, txtpaquete, txtcamino, txttiempo;
+
+    String txtambiente, txtpaquete, txtcamino, txttiempo;
 
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -52,8 +52,7 @@ public class InteresesMain extends Fragment {
         MenuItem item= menuNav.findItem(R.id.nav_user);
         final String userID=item.getTitle()+"";
 
-        min = root.findViewById(R.id.txtmin);
-        max = root.findViewById(R.id.txtmax);
+
 
         final RadioGroup radioGroup1 = root.findViewById(R.id.radioAmbiente);
         final RadioGroup radioGroup2 = root.findViewById(R.id.radioPaquete);
@@ -86,11 +85,9 @@ public class InteresesMain extends Fragment {
                     txttiempo = selectedRadioButton4.getText().toString();
                 } else {txttiempo="";}
 
-                txtmin = min.getText().toString();
-                txtmax = max.getText().toString();
 
-                min.setText("");/*Borra texto del min*/
-                max.setText("");/*Borra texto del max*/
+
+
 
                 Intent mainIntent = new Intent(getActivity(),
                         Recomendaciones.class);
