@@ -237,35 +237,40 @@ public class Recomendaciones extends AppCompatActivity implements View.OnClickLi
 
         });
 
-
+        int limite=0;
         for (Destiny destiny: lista) {
+            if(limite<10){
+                ImageView ii= new ImageView(this);
 
-            ImageView ii= new ImageView(this);
+                int imageSource= getImage(destiny.getImage());
 
-            int imageSource= getImage(destiny.getImage());
+                ii.setImageResource(imageSource);
+                RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(1000,500);
+                ii.setLayoutParams(params);
 
-            ii.setImageResource(imageSource);
-            RelativeLayout.LayoutParams params=new RelativeLayout.LayoutParams(1000,500);
-            ii.setLayoutParams(params);
-
-            RelativeLayout.LayoutParams paramsBtn=new RelativeLayout.LayoutParams(400,100);
-            TextView title = new TextView(this);
-            title.setText(destiny.getTitle());
-            title.setGravity(1);
-
-
-            Button btnDestiny = new Button(this);
-            btnDestiny.setText("Mas Detalles");
-            int id=destiny.getIddestino();
-            btnDestiny.setId(id);
-            btnDestiny.setOnClickListener(this);
+                RelativeLayout.LayoutParams paramsBtn=new RelativeLayout.LayoutParams(400,100);
+                TextView title = new TextView(this);
+                title.setText(destiny.getTitle());
+                title.setGravity(1);
 
 
-            btnDestiny.setLayoutParams(paramsBtn);
+                Button btnDestiny = new Button(this);
+                btnDestiny.setText("Mas Detalles");
+                int id=destiny.getIddestino();
+                btnDestiny.setId(id);
+                btnDestiny.setOnClickListener(this);
 
-            ll.addView(ii);
-            ll.addView(title);
-            ll.addView(btnDestiny);
+
+                btnDestiny.setLayoutParams(paramsBtn);
+
+                ll.addView(ii);
+                ll.addView(title);
+                ll.addView(btnDestiny);
+
+            }
+            limite=limite+1;
+
+
 
 
         }

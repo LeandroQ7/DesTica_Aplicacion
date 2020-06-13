@@ -63,12 +63,17 @@ public class RegistroMain extends Fragment {
                 txtPass1= password1.getText().toString();
 
 
+                if(txtUser.equals("") || txtPass1.equals("") ){
+                    edit2.setText("Complete todos los campos");
+                }else{
+                    connectionClass = new ConnectionClass();
+                    new RegistroMain.setUser().execute();
+
+                    edit2.setText("Registro Completado con Exito");
+
+                }
 
 
-                connectionClass = new ConnectionClass();
-                new RegistroMain.setUser().execute();
-
-                edit2.setText("Registro Completado con Exito");
 
 
             }
