@@ -101,6 +101,15 @@
 
                 </TableLayout>
 
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtube_player_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="192dp"
+
+                    app:showFullScreenButton="false">
+
+                </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
                 <com.google.android.gms.maps.MapView
                     android:id="@+id/mapView"
                     android:layout_width="108dp"
